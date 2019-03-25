@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reksio i Klakier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style type="text/css">
+        body {margin: 2em 2em auto 2em; max-width: 50em;}
+        .header {background-color: lightgrey; padding: 1em;}
+        .list-unstyled {padding: 0.5em}
+        .black-url {color: black; text-decoration: none}
+        .table {border: none;}
+        li {margin-bottom: 1em;}
+        a {margin-right: 1em;}
+        ul#menu li {display:inline; margin-left: 2em;}
+        #menu {margin-top: 0.8em}
+        .all-category {margin-left: 2em;}
+    </style>
+
+</head>
+<body>
+
+<a class="black-url" href="/">
+    <h1 class="header">Schronisko Reksio i Klakier</h1></a>
+<a href="/add">Dodaj zwierzaka</a>
+<ul id="menu"> Kategorie:
+    <a class="all-category" href="/">Wszystkie</a>
+    <li th:each="category : ${categories}">
+        <a th:href="@{'/category?name=' + ${category.name}}" name="category" th:text="${category.name}"></a>
+    </li>
+</ul>
+
+<p><h2 th:text="${category} + ' szukające domu ' ">Zwierzaki szukające domu</h2>
+
+<ul class="list-unstyled">
+    <li th:each="animal : ${animalsFromCategory}">
+        <a th:href="@{'/details?name=' + ${animal.name}}">
+            <img alt="doge" height="180px" th:src="${animal.image}" src="https://cdn11.bigcommerce.com/s-gho61/stencil/31cc7cb0-5035-0136-2287-0242ac11001b/e/3dad8ea0-5035-0136-cda0-0242ac110004/images/no-image.svg">
+        </a>
+        <a th:href="@{'/details?name=' + ${animal.name}}" th:text="${animal.name}"></a>
+        <br><a class="ban2" th:href="@{'/details?name=' + ${animal.name}}" th:text="${animal.shortDescription}"></a>
+    </li>
+</ul>
+
+<p th:text="${empty}"></p>
+
+<!--<br><div class="table-responsive-xl">-->
+<!--<table>-->
+<!--<tr th:each="animal : ${animals}">-->
+<!--<td th:each="image : ${images}">-->
+<!--&lt;!&ndash;<img alt="doge" height="200px" src="http://images2.imagebam.com/05/5c/29/0b16ce1173245024.png">&ndash;&gt;-->
+<!--<img th:src="${image}"  alt="" />-->
+<!--</td>-->
+<!--<td>-->
+<!--<a th:href="@{'/details?name=' + ${animal}}" th:text="${animal}"></a>-->
+<!--</td>-->
+<!--</tr>-->
+<!--</table>-->
+<!--</div>-->
+
+</body>
+</html>

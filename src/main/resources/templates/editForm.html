@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style type="text/css">
+        body {margin: 2em 2em auto 2em; max-width: 50em;}
+        .header {background-color: lightgrey; padding: 1em;}
+        .black-url {color: black; text-decoration: none}
+        label {margin-top: 1em}
+        button {margin-top: 1.5em}
+    </style>
+</head>
+<body>
+
+<a class="black-url" href="/">
+    <h1 class="header">Schronisko Reksio i Klakier</h1></a>
+
+<p><h4>Edytuj</h4>
+
+<form action="/complete" method="get">
+
+    <div class="form-group" >
+        <label>Imię</label>
+        <input type="text" th:value="${editedAnimal.name}" name="name" class="form-control" disabled>
+        <label>Krótki opis</label>
+        <input type="text" th:value="${editedAnimal.shortDescription}" name="shortDescription" class="form-control">
+        <label>Dłuższy opis</label>
+        <textarea name="longDescription" th:value="${editedAnimal.longDescription}" class="form-control" id="validationTextarea" ></textarea>
+        <label>Link do zdjęcia</label>
+        <input type="text" th:value="${editedAnimal.image}" name="url" class="form-control">
+
+        <button type="submit" class="btn btn-primary">Edytuj</button>
+
+    </div>
+</form>
+
+</body>
+</html>
